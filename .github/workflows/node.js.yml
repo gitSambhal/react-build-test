@@ -7,15 +7,13 @@ on:
   push:
     branches: [ build_test ]
 
-
 jobs:
   build_job:
     runs-on: self-hosted
-
+    - name: Build the project  
     strategy:
       matrix:
         node-version: [12.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
@@ -23,8 +21,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: npm i
     - run: npm i
+    - name: npm run build
     - run: npm run build --if-present
+    - name: npm test
     - run: npm test
     - name: Upload build folder as artifact
       uses: actions/upload-artifact@v2
@@ -32,15 +33,11 @@ jobs:
         name: build_artifact
         path: build/
   copy_files:
-    name: Copy Files
+    name: Copy files
     needs: build_job
     runs-on: self-hosted
     steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build_artifact
-      - name: copy build to another location
+      - name: Copy build to ~/suhail on server
         shell: bash
         run: |
           cp -R ./build ~/suhail
