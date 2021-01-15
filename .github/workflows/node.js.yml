@@ -10,7 +10,7 @@ on:
 jobs:
   build_job:
     runs-on: self-hosted
-    - name: Build the project  
+    name: Build the project  
     strategy:
       matrix:
         node-version: [12.x]
