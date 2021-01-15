@@ -29,7 +29,7 @@ jobs:
     - name: Upload build folder as artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build
+        name: build_artifact
         path: build/
   copy_files:
     name: Copy Files
@@ -39,7 +39,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-          name: build
+          name: build_artifact
       - name: copy build to another location
         shell: bash
         run: |
