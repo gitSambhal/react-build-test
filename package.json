@@ -16,7 +16,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "postbuild":"pwd",
-    // "postbuild":"cp -R ./dist ~/suhail",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

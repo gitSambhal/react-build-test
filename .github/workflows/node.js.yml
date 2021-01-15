@@ -31,28 +31,16 @@ jobs:
       with:
         name: build
         path: build/
-  job_1:
-    name: Add 3 and 7
+  copy_files:
+    name: Copy Files
+    needs: build_job
     runs-on: self-hosted
     steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+      - name: copy build to another location
       - shell: bash
         run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v2
-        with:
-          name: homework
-          path: math-homework.txt
-  # copy_files:
-  #   name: Copy Files
-  #   needs: build_job
-  #   runs-on: self-hosted
-  #   steps:
-  #     - name: Download build artifact
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         name: build
-  #     - name: copy build to another location
-  #     - shell: bash
-  #       run: |
-  #         cp -R build ~/suhail
+          cp -R ./build ~/suhail
