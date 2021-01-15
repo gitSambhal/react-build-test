@@ -43,4 +43,4 @@ jobs:
       - name: copy build to another location
         shell: bash
         run: |
-          cp -R ./build/* ~/suhail/
+          cp -R ./build/* ~/suhail
