@@ -43,4 +43,5 @@ jobs:
       - name: copy build to another location
         shell: bash
         run: |
-          mkdir -p ~/suhail && cp -R ./build/* "$_"
+          #mkdir -p ~/suhail && cp -R ./build/* "$_"
+          mkdir -p /var/www/pbdashboard.clouce.com/html/test_build && cp -R ./build/* "$_"
