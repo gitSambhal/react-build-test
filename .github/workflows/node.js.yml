@@ -43,18 +43,16 @@ jobs:
         with:
           name: homework
           path: math-homework.txt
-
-
-  copy_files:
-    name: Copy Files
-    needs: build_job
-    runs-on: self-hosted
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-      - name: copy build to another location
-      - shell: bash
-        run: |
-          cp -R build ~/suhail
+  # copy_files:
+  #   name: Copy Files
+  #   needs: build_job
+  #   runs-on: self-hosted
+  #   steps:
+  #     - name: Download build artifact
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: build
+  #     - name: copy build to another location
+  #     - shell: bash
+  #       run: |
+  #         cp -R build ~/suhail
