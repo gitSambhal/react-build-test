@@ -44,4 +44,4 @@ jobs:
         shell: bash
         run: |
           #mkdir -p ~/suhail && cp -R ./build/* "$_"
-          mkdir -p /var/www/pbdashboard.clouce.com/html/test_build && cp -R ./build/* "$_"
+          sudo mkdir -p /var/www/pbdashboard.clouce.com/html/test_build && cp -R ./build/* "$_"
