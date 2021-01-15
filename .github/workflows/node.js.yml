@@ -1,16 +1,15 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: React deploy
+name: Build React App on push to build_test branch
 
 on:
   push:
-    branches: [ deploy ]
+    branches: [ build_test ]
 
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -24,6 +23,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm i
     - run: npm run build --if-present
     - run: npm test
